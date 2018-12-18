@@ -3,7 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Adherent;
-use App\Form\Adherent1Type;
+use App\Entity\Informationsup;
+use App\Form\AdherentType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +23,7 @@ class AdherentController extends AbstractController
         $adherents = $this->getDoctrine()
             ->getRepository(Adherent::class)
             ->findAll();
-
+         var_dump ($adherents[0]->getInfosup()->getDroitimage());
         return $this->render('adherent/index.html.twig', ['adherents' => $adherents]);
     }
 
@@ -32,7 +33,7 @@ class AdherentController extends AbstractController
     public function new(Request $request): Response
     {
         $adherent = new Adherent();
-        $form = $this->createForm(Adherent1Type::class, $adherent);
+        $form = $this->createForm(AdherentType::class, $adherent);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -62,7 +63,7 @@ class AdherentController extends AbstractController
      */
     public function edit(Request $request, Adherent $adherent): Response
     {
-        $form = $this->createForm(Adherent1Type::class, $adherent);
+        $form = $this->createForm(AdherentType::class, $adherent);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -89,5 +90,15 @@ class AdherentController extends AbstractController
         }
 
         return $this->redirectToRoute('adherent_index');
+    }
+
+    /**
+     * @Route("/{idAdherent}", name="info_show", methods="GET")
+     */
+    public function infoshow(Adherent $adherent): Response
+    {
+       dump($adherent->getInfosup());
+       
+        // return $this->render('adherent/info_show.html.twig', ['infosup' => $adherent->getInfosup()]);
     }
 }

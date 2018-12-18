@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Informationsup
  *
- * @ORM\Table(name="informationsup", uniqueConstraints={@ORM\UniqueConstraint(name="id_adherent", columns={"id_adherent"})})
+ * @ORM\Table(name="informationsup")
  * @ORM\Entity
  */
 class Informationsup
@@ -104,16 +104,6 @@ class Informationsup
      * @ORM\Column(name="dossier_complet", type="string", length=100, nullable=false)
      */
     private $dossierComplet;
-
-    /**
-     * @var \Adherent
-     *
-     * @ORM\ManyToOne(targetEntity="Adherent")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_adherent", referencedColumnName="id_adherent")
-     * })
-     */
-    private $idAdherent;
 
     public function getIdInfosup(): ?int
     {
@@ -260,18 +250,6 @@ class Informationsup
     public function setDossierComplet(string $dossierComplet): self
     {
         $this->dossierComplet = $dossierComplet;
-
-        return $this;
-    }
-
-    public function getIdAdherent(): ?Adherent
-    {
-        return $this->idAdherent;
-    }
-
-    public function setIdAdherent(?Adherent $idAdherent): self
-    {
-        $this->idAdherent = $idAdherent;
 
         return $this;
     }

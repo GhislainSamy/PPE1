@@ -20,6 +20,7 @@
                 <th>Ville</th>
                 <th>Email</th>
                 <th>Mdp</th>
+                <th>Info S</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -38,14 +39,16 @@
                 <td>{{ adherent.ville }}</td>
                 <td>{{ adherent.email }}</td>
                 <td>{{ adherent.mdp }}</td>
+                 <td> <a href="{{ path('info_show', {'idAdherent': adherent.idAdherent}) }}">info</a></td>
+                <td>{{ adherent.dateCreation ? adherent.dateCreation|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('adherent_show', {'idAdherent': adherent.idAdherent}) }}">show</a>
+                    <a href="{{ path('info_show', {'idAdherent': adherent.idAdherent}) }}">show</a>
                     <a href="{{ path('adherent_edit', {'idAdherent': adherent.idAdherent}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="13">no records found</td>
+                <td colspan="14">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

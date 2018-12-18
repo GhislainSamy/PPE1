@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Adherent
  *
- * @ORM\Table(name="adherent")
+ * @ORM\Table(name="adherent", indexes={@ORM\Index(name="infosup", columns={"infosup"})})
  * @ORM\Entity
  */
 class Adherent
@@ -98,6 +98,22 @@ class Adherent
      */
     private $mdp;
     public $confirme_mdp;
+    /**
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="date_creation", type="datetime", nullable=true)
+     */
+    private $dateCreation;
+
+    /**
+     * @var \Informationsup
+     *
+     * @ORM\ManyToOne(targetEntity="Informationsup")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="infosup", referencedColumnName="id_infosup")
+     * })
+     */
+    private $infosup;
 
     public function getIdAdherent(): ?int
     {
@@ -232,6 +248,30 @@ class Adherent
     public function setMdp(string $mdp): self
     {
         $this->mdp = $mdp;
+
+        return $this;
+    }
+
+    public function getDateCreation(): ?\DateTimeInterface
+    {
+        return $this->dateCreation;
+    }
+
+    public function setDateCreation(?\DateTimeInterface $dateCreation): self
+    {
+        $this->dateCreation = $dateCreation;
+
+        return $this;
+    }
+
+    public function getInfosup(): ?Informationsup
+    {
+        return $this->infosup;
+    }
+
+    public function setInfosup(?Informationsup $infosup): self
+    {
+        $this->infosup = $infosup;
 
         return $this;
     }

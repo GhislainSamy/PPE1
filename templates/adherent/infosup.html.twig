@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}infosup{% endblock %}
+
+{% block body %}
+    <h1>Info </h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>idInfosup</th>
+                <td>{{ infosup.idInfosup }}</td>
+            </tr>
+            <tr>
+                <th>typeMailing</th>
+                <td>{{ infosup.typeMailing }}</td>
+            </tr>
+            <tr>
+                <th>accident</th>
+                <td>{{ infosup.accident }}</td>
+            </tr>
+            <tr>
+                <th>droitimage</th>
+                <td>{{ infosup.droitimage }}</td>
+            </tr>
+            <tr>
+                <th>infocomplem</th>
+                <td>{{ infosup.infocomplem }}</td>
+            </tr>
+            <tr>
+                <th>assurance</th>
+                <td>{{ infosup.assurance }}</td>
+            </tr>
+            <tr>
+                <th>optionassurance</th>
+                <td>{{ infosup.optionassurance }}</td>
+            </tr>
+            <tr>
+                <th>typePaiement</th>
+                <td>{{ infosup.typePaiement }}</td>
+            </tr>
+            <tr>
+                <th>niveauTechnique</th>
+                <td>{{ infosup.niveauTechnique }}</td>
+            </tr>
+            <tr>
+                <th>dateCreation</th>
+                <td>{{ infosup.dateCreation }}</td>
+            </tr>
+            <tr>
+                <th>demandeFacture</th>
+                <td>{{ infosup.demandeFacture }}</td>
+            </tr>
+            <tr>
+                <th>passJeune</th>
+                <td>{{ infosup.passJeune }}</td>
+            </tr>
+            <tr>
+                <th>dossierComplet</th>
+                <td>{{ infosup.dossierComplet }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('infosup_index') }}">back to list</a>
+
+    <a href="{{ path('infosup_edit', {'infosup': infosup}) }}">edit</a>
+
+    {{ include('infosup/_delete_form.html.twig') }}
+{% endblock %}

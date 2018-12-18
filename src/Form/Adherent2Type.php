@@ -7,7 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AdherentType extends AbstractType
+class Adherent2Type extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -23,8 +23,8 @@ class AdherentType extends AbstractType
             ->add('ville')
             ->add('email')
             ->add('mdp')
-            ->add('dateCreation')
-            ->add('infosup')
+
+
         ;
     }
 
