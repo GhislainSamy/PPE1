@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Adherent index{% endblock %}
+
+{% block body %}
+    <h1>Adherent index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdAdherent</th>
+                <th>Sexe</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Datenaiss</th>
+                <th>Nationalite</th>
+                <th>Telephone</th>
+                <th>Adresse</th>
+                <th>Cp</th>
+                <th>Ville</th>
+                <th>Email</th>
+                <th>Mdp</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for adherent in adherents %}
+            <tr>
+                <td>{{ adherent.idAdherent }}</td>
+                <td>{{ adherent.sexe }}</td>
+                <td>{{ adherent.nom }}</td>
+                <td>{{ adherent.prenom }}</td>
+                <td>{{ adherent.datenaiss }}</td>
+                <td>{{ adherent.nationalite }}</td>
+                <td>{{ adherent.telephone }}</td>
+                <td>{{ adherent.adresse }}</td>
+                <td>{{ adherent.cp }}</td>
+                <td>{{ adherent.ville }}</td>
+                <td>{{ adherent.email }}</td>
+                <td>{{ adherent.mdp }}</td>
+                <td>
+                    <a href="{{ path('adherent_show', {'idAdherent': adherent.idAdherent}) }}">show</a>
+                    <a href="{{ path('adherent_edit', {'idAdherent': adherent.idAdherent}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('adherent_new') }}">Create new</a>
+{% endblock %}
